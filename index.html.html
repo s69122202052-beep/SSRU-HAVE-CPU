@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSRU HAVE CPU - ร้านอุปกรณ์คอมพิวเตอร์ราคาย่อมเยา</title>
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts - Kanit -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --primary-light: #f0f9ff;
+            --primary-border: #bae6fd;
+            --accent: #10b981;
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --danger: #ef4444;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 20px -5px rgba(2, 132, 199, 0.1);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Header */
+        .navbar {
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 6%;
+            border-bottom: 2px solid #0284c715;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 1.1rem;
+            border-radius: 12px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background-color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .badge {
+            background-color: var(--danger);
+            color: white;
+            padding: 2px 7px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1140px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .page-view { display: none; }
+        .page-view.active { display: block; }
+
+        /* Back Navigation Button */
+        .btn-back-nav {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-back-nav:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary-border);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0369a1 100%);
+            color: white;
+            padding: 3rem 3rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            background-color: #38bdf820;
+            border: 1px solid #38bdf850;
+            color: #38bdf8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: white;
+            padding: 0.75rem 1.6rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.6);
+        }
+
+        .hero-icon-bg {
+            font-size: 9rem;
+            color: rgba(255, 255, 255, 0.05);
+            margin-right: 1rem;
+        }
+
+        /* Section Title Header */
+        .section-header-custom {
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-left: 4px solid var(--primary);
+            padding-left: 0.8rem;
+        }
+
+        .section-header-custom h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .section-header-custom p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Category Cards Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-card:hover {
+            border-color: var(--primary-border);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background-color: var(--primary-light);
+        }
+
+        .category-icon-box {
+            width: 42px;
+            height: 42px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .category-card:hover .category-icon-box {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .category-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .category-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Products Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 1.1rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-border);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 180px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border: 1px solid #f1f5f9;
+            overflow: hidden;
+        }
+
+        .product-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        .product-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin: 0.7rem 0 0.3rem 0;
+            color: var(--text-main);
+            line-height: 1.35;
+            height: 2.7em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.8rem;
+        }
+
+        .tag-badge {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.7rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.55rem 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.88rem;
+        }
+
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-secondary { background-color: #e2e8f0; color: var(--text-main); }
+        .btn-secondary:hover { background-color: #cbd5e1; }
+        .btn-danger { background-color: var(--danger); color: white; }
+        .btn-block { width: 100%; }
+
+        /* Filter Panel */
+        .filter-panel {
+            background-color: var(--card-bg);
+            padding: 1.3rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        select, input[type="text"] {
+            padding: 0.65rem 0.9rem;
+            background-color: #f8fafc;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        select:focus, input:focus { border-color: var(--primary); }
+
+        .math-formula-box {
+            background-color: var(--primary-light);
+            border: 1px solid var(--primary-border);
+            padding: 0.8rem 1.1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Cart & Summary */
+        .cart-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .cart-items-section { flex: 2; min-width: 300px; }
+        .cart-summary-section { flex: 1; min-width: 280px; }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 0.8rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .cart-table th { background-color: #f8fafc; font-weight: 600; }
+
+        .summary-card {
+            background-color: var(--card-bg);
+            padding: 1.3rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .coupon-box {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.9rem 0;
+        }
+
+        .coupon-box input { flex: 1; }
+
+        .logic-rules {
+            background-color: #f8fafc;
+            padding: 0.9rem;
+            border-radius: 8px;
+            margin: 0.9rem 0;
+            font-size: 0.82rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .logic-rules ul { list-style: none; }
+        .logic-rules li { margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+
+        .summary-details p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 1.4rem;
+            color: var(--text-muted);
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo" onclick="navigateTo('home')">
+            <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span> SSRU HAVE CPU
+        </div>
+        <nav class="nav-links">
+            <a id="nav-home" class="active" onclick="navigateTo('home')"><i class="fa-solid fa-house"></i> หน้าแรก</a>
+            <a id="nav-products" onclick="navigateTo('products')"><i class="fa-solid fa-store"></i> สินค้าทั้งหมด</a>
+            <a id="nav-cart" onclick="navigateTo('cart')"><i class="fa-solid fa-basket-shopping"></i> ตะกร้า <span id="cart-badge" class="badge">0</span></a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- PAGE 1: HOME -->
+        <section id="page-home" class="page-view active">
+            <div class="hero">
+                <div>
+                    <span class="hero-badge"><i class="fa-solid fa-check-circle"></i> VERIFIED COMPUTER HARDWARE</span>
+                    <h1>ศูนย์รวมอุปกรณ์คอมพิวเตอร์<br>ของเด็กมหาวิทยาลัย</h1>
+                    <p>ตรวจสอบรูปภาพตรงตามสินค้าเฉพาะประเภท ไม่มีรูปหมวก หรือรูปแปลกปลอมแน่นอน</p>
+                    <button class="btn-hero" onclick="navigateTo('products')">เลือกชมสินค้าทั้งหมด <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="hero-icon-bg">
+                    <i class="fa-solid fa-desktop"></i>
+                </div>
+            </div>
+
+            <div class="section-header-custom">
+                <div>
+                    <h3>หมวดหมู่อุปกรณ์</h3>
+                    <p>เลือกดูสินค้าตามประเภทฮาร์ดแวร์จริง</p>
+                </div>
+            </div>
+
+            <div class="category-grid">
+                <div class="category-card" onclick="quickFilterCategory('Keyboard')">
+                    <div class="category-icon-box"><i class="fa-solid fa-keyboard"></i></div>
+                    <div class="category-info">
+                        <h4>คีย์บอร์ด (Keyboard)</h4>
+                        <p>Mechanical / RGB</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="quickFilterCategory('Mouse')">
+                    <div class="category-icon-box"><i class="fa-solid fa-computer-mouse"></i></div>
+                    <div class="category-info">
+                        <h4>เมาส์ (Mouse)</h4>
+                        <p>Gaming / Wireless</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="quickFilterCategory('GPU')">
+                    <div class="category-icon-box"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="category-info">
+                        <h4>การ์ดจอ (GPU)</h4>
+                        <p>RTX / RX Series</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="quickFilterCategory('CPU')">
+                    <div class="category-icon-box"><i class="fa-solid fa-server"></i></div>
+                    <div class="category-info">
+                        <h4>ซีพียู (CPU)</h4>
+                        <p>Intel Core / AMD Ryzen</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="quickFilterCategory('RAM')">
+                    <div class="category-icon-box"><i class="fa-solid fa-memory"></i></div>
+                    <div class="category-info">
+                        <h4>แรม (RAM)</h4>
+                        <p>DDR4 / DDR5 High Speed</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="quickFilterCategory('SSD')">
+                    <div class="category-icon-box"><i class="fa-solid fa-hard-drive"></i></div>
+                    <div class="category-info">
+                        <h4>เอสเอสดี (SSD)</h4>
+                        <p>M.2 NVMe PCIe 4.0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2.5rem;">
+                <div class="section-header-custom">
+                    <div>
+                        <h3>สินค้าคัดสรรพิเศษ</h3>
+                        <p>เฉพาะสินค้าที่ยืนยันรูปภาพอุปกรณ์ถูกต้อง</p>
+                    </div>
+                </div>
+                <div class="product-grid" id="home-featured-products"></div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: PRODUCTS -->
+        <section id="page-products" class="page-view">
+            <button class="btn-back-nav" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับหน้าแรก</button>
+
+            <div class="section-header-custom">
+                <div>
+                    <h3>ระบบกรองสินค้าตามหมวดหมู่</h3>
+                    <p>แสดงรายการสินค้าที่มีภาพถูกต้องตรงปกเท่านั้น</p>
+                </div>
+            </div>
+
+            <div class="filter-panel">
+                <div class="filter-group">
+                    <label for="category-select">หมวดหมู่สินค้า:</label>
+                    <select id="category-select" onchange="applyCategoryFilter()">
+                        <option value="Keyboard">คีย์บอร์ด (Keyboard)</option>
+                        <option value="Mouse">เมาส์ (Mouse)</option>
+                        <option value="GPU">การ์ดจอ (GPU)</option>
+                        <option value="CPU">ซีพียู (CPU)</option>
+                        <option value="RAM">แรม (RAM)</option>
+                        <option value="SSD">เอสเอสดี (SSD / Storage)</option>
+                        <option value="ALL">สินค้าทั้งหมด (All Verified Products)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="applyCategoryFilter()"><i class="fa-solid fa-filter"></i> ค้นหา</button>
+            </div>
+
+            <div class="math-formula-box" id="formula-display">
+                <strong>หมวดหมู่ที่เลือก:</strong> <span id="formula-text">คีย์บอร์ด (Keyboard)</span>
+            </div>
+
+            <div class="product-grid" id="products-list"></div>
+        </section>
+
+        <!-- PAGE 3: CART -->
+        <section id="page-cart" class="page-view">
+            <button class="btn-back-nav" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับเลือกสินค้า</button>
+
+            <div class="section-header-custom">
+                <div>
+                    <h3>ตะกร้าสินค้า & คำนวณโปรโมชั่นโค้ด SSRU</h3>
+                    <p>ระบบตรวจเงื่อนไขส่วนลดและค่าจัดส่งอัตโนมัติ</p>
+                </div>
+            </div>
+
+            <div class="cart-layout">
+                <div class="cart-items-section">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>รายการสินค้า</th>
+                                <th>ราคา</th>
+                                <th>จำนวน</th>
+                                <th>รวม</th>
+                                <th>ลบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-table-body"></tbody>
+                    </table>
+                    <div id="empty-cart-msg" style="display:none; text-align: center; padding: 2.5rem; color: var(--text-muted); background: white; border-radius: 12px; margin-top: 1rem;">
+                        <i class="fa-solid fa-basket-shopping" style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.4;"></i>
+                        <p>ยังไม่มีสินค้าในตะกร้า <a onclick="navigateTo('products')" style="color:var(--primary); cursor:pointer; font-weight:600;">เลือกซื้อสินค้าเลย</a></p>
+                    </div>
+                </div>
+
+                <div class="cart-summary-section">
+                    <div class="summary-card">
+                        <h3 style="margin-bottom: 0.8rem; font-size:1.1rem;"><i class="fa-solid fa-receipt"></i> สรุปคำสั่งซื้อ</h3>
+
+                        <div class="coupon-box">
+                            <input type="text" id="coupon-input" placeholder="ใส่โค้ดส่วนลด SSRU">
+                            <button class="btn btn-secondary" onclick="applyCoupon()">ใช้โค้ด</button>
+                        </div>
+
+                        <div class="logic-rules">
+                            <p style="font-weight:600; margin-bottom: 0.4rem; color: var(--primary);">เงื่อนไขโปรโมชั่น (Boolean Conditions):</p>
+                            <ul>
+                                <li id="rule1-status"><i class="fa-regular fa-circle-check" style="color:var(--accent)"></i> <b>Rule 1:</b> (ยอดรวม ≥ 5,000฿) <b>AND</b> (มี Gaming Gear) &rarr; ลด 300฿</li>
+                                <li id="rule2-status"><i class="fa-regular fa-circle-check" style="color:var(--accent)"></i> <b>Rule 2:</b> (จำนวน ≥ 2 ชิ้น) <b>OR</b> (ใช้โค้ดส่วนลด SSRU) &rarr; ฟรีค่าส่ง + ลด 10%</li>
+                            </ul>
+                        </div>
+
+                        <div class="summary-details">
+                            <p>ราคารวมสินค้า: <span><span id="subtotal-price">0</span> ฿</span></p>
+                            <p>ส่วนลดโปรโมชั่น: <span style="color:var(--accent); font-weight:600;">-<span id="discount-price">0</span> ฿</span></p>
+                            <p>ค่าจัดส่ง: <span><span id="shipping-price">0</span> ฿</span></p>
+                            <hr style="border-color: var(--border-color); margin: 0.8rem 0;">
+                            <h3 style="display:flex; justify-content:space-between; font-size:1.25rem;">ราคาสุทธิ: <span style="color:var(--primary);"><span id="final-price">0</span> ฿</span></h3>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" style="margin-top: 1rem; padding: 0.75rem;" onclick="checkout()"><i class="fa-solid fa-credit-card"></i> ชำระเงิน</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div style="margin-top: 2.5rem;">
+                <div class="section-header-custom">
+                    <div>
+                        <h3>สินค้าที่คุณอาจสนใจเพิ่มเติม</h3>
+                        <p>รายการสินค้าเพิ่มเติมที่มีภาพตรงประเภท</p>
+                    </div>
+                </div>
+                <div class="product-grid" id="recommended-products"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SSRU HAVE CPU Store | พัฒนาด้วย HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script>
+        const productsData = [
+            { 
+                id: 101, 
+                name: "Logitech K120 Ergonomic USB Keyboard", 
+                price: 250, 
+                category: "Keyboard", 
+                tags: ["Keyboard"], 
+                img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 102, 
+                name: "Fantech Atom TKL MK876 Mechanical Keyboard", 
+                price: 690, 
+                category: "Keyboard", 
+                tags: ["Keyboard", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 103, 
+                name: "OKER K450 RGB Gaming Keyboard", 
+                price: 390, 
+                category: "Keyboard", 
+                tags: ["Keyboard", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 104, 
+                name: "Royal Kludge RK61 RGB Wireless Keyboard", 
+                price: 1290, 
+                category: "Keyboard", 
+                tags: ["Keyboard", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 105, 
+                name: "Razer BlackWidow V3 Mechanical Keyboard", 
+                price: 2890, 
+                category: "Keyboard", 
+                tags: ["Keyboard", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 201, 
+                name: "Logitech G102 LIGHTSYNC RGB Gaming Mouse", 
+                price: 590, 
+                category: "Mouse", 
+                tags: ["Mouse", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 202, 
+                name: "Razer DeathAdder Ergonomic Gaming Mouse", 
+                price: 690, 
+                category: "Mouse", 
+                tags: ["Mouse", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 203, 
+                name: "Fantech Wireless RGB Computer Mouse", 
+                price: 890, 
+                category: "Mouse", 
+                tags: ["Mouse", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1626218174358-7769486c4b79?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 301, 
+                name: "NVIDIA GeForce RTX 4060 8GB GDDR6", 
+                price: 10500, 
+                category: "GPU", 
+                tags: ["GPU", "Gaming"], 
+                img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 401, 
+                name: "Intel Core i5-12400F LGA1700 Processor", 
+                price: 4290, 
+                category: "CPU", 
+                tags: ["CPU"], 
+                img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 501, 
+                name: "Kingston FURY Beast DDR4 16GB (8x2)", 
+                price: 1350, 
+                category: "RAM", 
+                tags: ["RAM"], 
+                img: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80" 
+            },
+            { 
+                id: 601, 
+                name: "Kingston NV2 1TB M.2 NVMe PCIe 4.0 SSD", 
+                price: 2190, 
+                category: "SSD", 
+                tags: ["SSD"], 
+                img: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80" 
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('ssru_cart_single')) || [];
+        let appliedCouponCode = "";
+
+        function navigateTo(pageId) {
+            window.location.hash = pageId;
+        }
+
+        function renderPageView(pageId) {
+            const validPages = ['home', 'products', 'cart'];
+            const targetPage = validPages.includes(pageId) ? pageId : 'home';
+
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+            const activeSection = document.getElementById(`page-${targetPage}`);
+            const activeNav = document.getElementById(`nav-${targetPage}`);
+
+            if (activeSection) activeSection.classList.add('active');
+            if (activeNav) activeNav.classList.add('active');
+
+            if (targetPage === 'home') initHomePage();
+            if (targetPage === 'products') applyCategoryFilter();
+            if (targetPage === 'cart') renderCartPage();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                navigateTo('home');
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            const currentHash = window.location.hash.replace('#', '');
+            renderPageView(currentHash);
+        });
+
+        function quickFilterCategory(catName) {
+            navigateTo('products');
+            setTimeout(() => {
+                const selectElem = document.getElementById('category-select');
+                if (selectElem) selectElem.value = catName;
+                applyCategoryFilter();
+            }, 50);
+        }
+
+        function applyCategoryFilter() {
+            const selectVal = document.getElementById('category-select').value;
+            let filtered = [];
+
+            if (selectVal === "ALL") {
+                filtered = productsData;
+            } else {
+                filtered = productsData.filter(p => p.category === selectVal || p.tags.includes(selectVal));
+            }
+
+            const selectElem = document.getElementById('category-select');
+            const selectText = selectElem.options[selectElem.selectedIndex].text;
+            document.getElementById('formula-text').textContent = `${selectText} => พบสินค้าที่ยืนยันรูปภาพตรง ${filtered.length} รายการ`;
+            
+            renderProductCards(filtered, document.getElementById('products-list'));
+        }
+
+        function getRecommendedSet() {
+            const cartSet = new Set(cart.map(item => item.id));
+            return productsData.filter(p => !cartSet.has(p.id)).slice(0, 4);
+        }
+
+        function calculateSummaryLogic() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const hasGamingItem = cart.some(item => item.tags.includes("Gaming"));
+
+            let discount = 0;
+            const isRule1Met = (subtotal >= 5000) && hasGamingItem;
+            if (isRule1Met) discount += 300;
+
+            if (appliedCouponCode === "SSRU") {
+                discount += Math.round(subtotal * 0.10);
+            }
+
+            let shippingFee = 80;
+            const isRule2Met = (totalQty >= 2) || (appliedCouponCode !== "");
+            if (isRule2Met || cart.length === 0) shippingFee = 0;
+
+            const finalTotal = Math.max(0, subtotal - discount + shippingFee);
+
+            return { subtotal, discount, shippingFee, finalTotal };
+        }
+
+        function renderProductCards(products, container) {
+            if (!container) return;
+            if (products.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); text-align: center; padding: 2rem;">ไม่พบสินค้าในหมวดหมู่นี้</p>`;
+                return;
+            }
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div>
+                        <div class="product-img-container">
+                            <img src="${product.img}" alt="${product.name}" class="product-img" loading="lazy">
+                        </div>
+                        <h3 class="product-title" title="${product.name}">${product.name}</h3>
+                        <div class="product-tags">
+                            <span class="tag-badge">[${product.category}]</span>
+                            ${product.tags.map(t => `<span class="tag-badge">#${t}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-price">${product.price.toLocaleString()} ฿</div>
+                        <button class="btn btn-primary btn-block" onclick="addToCart(${product.id})">
+                            <i class="fa-solid fa-cart-plus"></i> เพิ่มลงตะกร้า
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initHomePage() {
+            const featuredList = productsData.slice(0, 6);
+            renderProductCards(featuredList, document.getElementById('home-featured-products'));
+        }
+
+        function renderCartPage() {
+            const tableBody = document.getElementById('cart-table-body');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            if (cart.length === 0) {
+                tableBody.innerHTML = '';
+                emptyMsg.style.display = 'block';
+            } else {
+                emptyMsg.style.display = 'none';
+                tableBody.innerHTML = cart.map(item => `
+                    <tr>
+                        <td><b>${item.name}</b></td>
+                        <td>${item.price.toLocaleString()} ฿</td>
+                        <td>
+                            <button class="btn btn-secondary" style="padding: 2px 7px;" onclick="changeQty(${item.id}, -1)">-</button>
+                            <span style="margin: 0 5px;">${item.qty}</span>
+                            <button class="btn btn-secondary" style="padding: 2px 7px;" onclick="changeQty(${item.id}, 1)">+</button>
+                        </td>
+                        <td>${(item.price * item.qty).toLocaleString()} ฿</td>
+                        <td><button class="btn btn-danger" style="padding: 3px 7px;" onclick="removeFromCart(${item.id})"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                `).join('');
+            }
+
+            const summary = calculateSummaryLogic();
+            document.getElementById('subtotal-price').textContent = summary.subtotal.toLocaleString();
+            document.getElementById('discount-price').textContent = summary.discount.toLocaleString();
+            document.getElementById('shipping-price').textContent = summary.shippingFee.toLocaleString();
+            document.getElementById('final-price').textContent = summary.finalTotal.toLocaleString();
+
+            renderProductCards(getRecommendedSet(), document.getElementById('recommended-products'));
+        }
+
+        function addToCart(id) {
+            const product = productsData.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            saveCart();
+            alert(`เพิ่ม "${product.name}" ลงในตะกร้าเรียบร้อยแล้ว`);
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) return removeFromCart(id);
+                saveCart();
+                renderCartPage();
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            saveCart();
+            renderCartPage();
+        }
+
+        function saveCart() {
+            localStorage.setItem('ssru_cart_single', JSON.stringify(cart));
+            document.getElementById('cart-badge').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+        }
+
+        function applyCoupon() {
+            const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+            if (input === "SSRU") {
+                appliedCouponCode = "SSRU";
+                alert("ใช้โค้ดส่วนลด SSRU สำเร็จ! ได้รับส่วนลด 10% + ฟรีค่าจัดส่ง");
+            } else {
+                alert("โค้ดส่วนลดไม่ถูกต้อง (กรุณาใช้โค้ด: SSRU)");
+            }
+            renderCartPage();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return alert("กรุณาเลือกสินค้าลงตะกร้าก่อนทำรายการ");
+            alert("สั่งซื้อสินค้าสำเร็จ! ขอบคุณที่เลือกใช้บริการ SSRU HAVE CPU");
+            cart = [];
+            saveCart();
+            renderCartPage();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            saveCart();
+            const initialHash = window.location.hash.replace('#', '') || 'home';
+            renderPageView(initialHash);
+        });
+    </script>
+</body>
+</html>
